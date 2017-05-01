@@ -1,0 +1,52 @@
+{% load staticfiles %}
+
+<html>
+
+<head>
+    <title>Music generator</title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'music-generator.css' %}">
+</head>
+
+<body>
+    <!-- Canvas to visualize the current playing sound -->
+
+
+    <h1>Classical music generator</h1>
+
+    <h2 class="track" data-track-path="{% static 'Electro_410.mp3' %}">Electro 410</h2>
+    
+    <!-- Container holding the canvas visualizations of each track -->
+    <div id="waveformContainer">
+        <div id="selection"></div>
+    </div>
+
+    <div id="audioLoading">Audio is loading...</div>
+
+    <!-- Controls -->
+    <span id="play" class="icon" onclick="playMusic()">&#9658;</span>
+    <span id="pause" class="icon" onclick="pauseMusic()">&#10074;&#10074;</span>
+    <label for="volC">Volume: 0 <input id="volControl" type="range" min="0" max="100" step="1" value="10" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input> 100</label>
+
+    <!-- Rating controls -->
+    <div id="tu" name="&#128077;" class="icon thumb disabled" onclick="handleThumbClick(this)">&#128077;</div>
+    <div id="td" name="&#128078;" class="icon thumb disabled" onclick="handleThumbClick(this)">&#128078;</div>
+
+
+    <div class="content">
+        <h3>Generated tracks:</h3>
+        <ul>
+            {% for song in songs %}
+
+            <li><a href="/pageURL">{{ song.name }}</a></li>
+            
+            {% endfor %}
+        </ul>
+    </div>
+
+<script src="{% static 'wavesurfer.min.js' %}"></script>
+<script src="{% static 'p5.min.js' %}"></script>
+<script src="{% static 'p5.sound.min.js' %}"></script>
+<script src="{% static 'music-generator.js' %}"></script>
+</body>
+</html>

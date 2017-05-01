@@ -1,0 +1,83 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4 {
+	font-family: 'Dosis', sans-serif;
+}
+
+
+.content {
+	max-width: 1400px;
+    padding: 10px;
+    margin-top: 50px;
+    border: 2px solid #68d9ff;
+    background-color: white;
+}
+
+
+div[id="waveformContainer"] {
+	font-size: 0;
+	white-space: nowrap;
+	max-width: 100%;
+	overflow-x: auto;
+	position: relative;
+}
+div[id="waveformContainer"] > div {
+	display: inline-block;
+	
+}
+
+div[id="selection"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 255, 0.3);
+}
+
+canvas[id="defaultCanvas0"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#audioLoading {
+	text-align: center;
+	font-size: 2em;
+}
+
+
+.icon {
+	font-size: 2em;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+}
+.thumb {
+    color: transparent;
+	text-shadow: 0 0 3px rgb(79,172,254);
+}
+.thumb.selected {
+	text-shadow: 0 0 0 rgb(79,172,254);
+}
+.thumb::before {
+	content: attr(name);
+	position: absolute;
+	text-shadow: 0 0 0 #fff;
+}
+.thumb.disabled {
+	color: transparent;
+	text-shadow: 0 0 0 grey;
+
+	cursor: not-allowed;
+}
+.thumb.selected::before,
+.thumb.disabled::before {
+	display: none;
+}
